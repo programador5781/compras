@@ -24,6 +24,7 @@ Este es un programa desarrollado en ReactJS, Redux, Node.js y Express que permit
 - Redux: Biblioteca de manejo del estado de la aplicación.
 - Node.js: Entorno de ejecución de JavaScript del lado del servidor.
 - Express: Marco de aplicación web para Node.js.
+- PostgreSQL
 
 ## Configuración
 
