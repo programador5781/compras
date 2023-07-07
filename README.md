@@ -1,6 +1,7 @@
-# Programa de Cálculo de Compras desarrollado para la facultad de Ingenieria de Software
+# Programa de Cálculo de Compras desarrollado para la facultad de Ingeniería, en su programa Ingeniería de Software
 ## V Semestre Universidad de Cartagena
 ## Asignatura : Desarrollo Web
+### Actividad N° 3
 
 Este es un programa desarrollado en ReactJS, Redux, Node.js y Express que permite registrar 5 compras y realizar los siguientes cálculos:
 
