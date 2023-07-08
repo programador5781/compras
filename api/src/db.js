@@ -42,7 +42,7 @@ const { Model, Purchase, User } = sequelize.models;
 // User.hasMany(Purchase);
 // Purchase.belongsTo(User);
 
-Model.belongsToMany(Purchase, ({through: "model_purchase", foreignKey: "ModelId", otherKey: "PurchaseId" })),
+Model.belongsToMany(Purchase, ({through: "model_purchase"})),
 Purchase.belongsToMany(Model, ({through: "model_purchase"})),
 User.belongsToMany(Purchase, ({through: "user_purchase"}))
 Purchase.belongsToMany(User, ({through: "user_purchase"}))

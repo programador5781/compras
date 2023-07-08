@@ -22,7 +22,7 @@ const app = require('./src/app');
 const { conn, Model } = require('./src/db');
 const port = 3001;
 
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
     app.listen(port, async () => {
         const allModels = await Model.findAll();
         if (!allModels.length) {
@@ -30,7 +30,7 @@ conn.sync({ force: false }).then(() => {
             var apiModels = apiModelsResponse.data.map((e) => {
                 return {
                     id: e.id,
-                    title: e.title.common,
+                    title: e.title,
                     price: e.price,
                     description: e.description,
                     category: e.category,

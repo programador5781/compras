@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
         },
         title: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         price: {
             type: DataTypes.DECIMAL(10, 2),
@@ -29,8 +29,9 @@ module.exports = (sequelize) => {
             allowNull: false
         },
         rating: {
-            type: DataTypes.JSONB, // Puedes usar DataTypes.JSON si no estás utilizando PostgreSQL
-            allowNull: false
+            type: DataTypes.JSONB,
+            allowNull: true
         }
+
     });
 };
