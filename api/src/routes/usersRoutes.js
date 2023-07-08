@@ -1,22 +1,21 @@
 const { Router } = require('express');
+const {
+    getUsersHandler,
+    getUserHandler,
+    createUserHandler
+} = require('../handlers/usersHandlers');
 
 
 const usersRouter = Router();
 
 // obtener una lista de usuarios del sistema
-usersRouter.get('/', (req, res) => {
-    res.status(200).send('Estoy en usuarios');
-});
+usersRouter.get('/',  getUsersHandler);
 
 // detalles de un usuario del sistema
-usersRouter.get('/:id', (req, res) => {
-    res.status(200).send('Estoy en los detalles de un  user');
-});
+usersRouter.get('/:id',getUserHandler);
 
 // crear un usuario
-usersRouter.post('/' , (req, res) => {
-    res.status(200).send('Voy a crear un usuario')
-});
+usersRouter.post('/', createUserHandler);
 
 
 module.exports = usersRouter;
