@@ -9,7 +9,7 @@ app.use(morgan('dev'));
 
 
 app.use((req, res, next) => {
-    console.log('Hola estoy pasando por el middleware');
+    console.log('Hola estoy pasando por el middleware app y voy hacia >>> el mainRouter >>> routes >>> handlers');
     next();
 });
 
