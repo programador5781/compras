@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const {
     getUsersHandler,
-    getUserHandler,
+    getUserByIdHandler,
     createUserHandler
 } = require('../handlers/usersHandlers');
 
@@ -12,7 +12,7 @@ const usersRouter = Router();
 usersRouter.get('/',  getUsersHandler);
 
 // detalles de un usuario del sistema
-usersRouter.get('/:id',getUserHandler);
+usersRouter.get('/:id',getUserByIdHandler);
 
 // crear un usuario
 usersRouter.post('/', createUserHandler);

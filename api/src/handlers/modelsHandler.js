@@ -4,11 +4,11 @@ const { Model } = require('../db');
 // Get /models
 // Get 7models?name=
 const getProductsHandler = async (req, res) => {
-    const { title } = req.query
+    const title = req.query['title']
+    console.log('este es el title', title);
 
     try {
         const allModels = await Model.findAll();
-
         if (title) {
             const byTitle = await allModels.filter(i => i.title.toLowerCase().startsWith(title.toLowerCase()))
             byTitle.length ?
@@ -19,16 +19,18 @@ const getProductsHandler = async (req, res) => {
         }
     } catch (error) {
         res.status(400).send({ error: error.message })
-
     }
-
     //res.status(200).send('Estoy en modelos de productos');
 };
 
 // Obtener producto por id
-const getProductHandler = (req, res) => {
-    res.status(200).send('Detalle de producto por id')
+const getProductByIdHandler = async (req, res) => {
+    const { id } = req.params    
+
+    res.status(200).send(`Enviando detalle de id ${id}`);
+
 };
+
 
 // Creación de un producto
 const createProductHandler = (req, res) => {
@@ -39,6 +41,6 @@ const createProductHandler = (req, res) => {
 
 module.exports = {
     getProductsHandler,
-    getProductHandler,
+    getProductByIdHandler,
     createProductHandler
 }
