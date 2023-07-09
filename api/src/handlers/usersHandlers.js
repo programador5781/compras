@@ -1,10 +1,37 @@
+const { User } = require('../db');
+const axios = require('axios')
 // Obtener listado de todos los users del sistema(trabajadores), llamado a la db donde se han almacenado los trabajadores.
-const getUsersHandler = (req, res) => {
-    res.status(200).send('Estoy en el listado de los usuarios');
+const getUsersHandler = async (req, res) => {
+    try {
+        const allUsers = await User.findAll();
+        
+        if (!allUsers.length) {
+          const apiUsersResponse = await axios.get('https://jsonplaceholder.typicode.com/users');
+          const apiUsers = apiUsersResponse.data.map((e) => {
+            return {
+              id: e.id,
+              name: e.name,
+              username: e.username,
+              email: e.email,
+              phone: e.phone,
+              image: e.image,
+            };
+          });
+    
+          await User.bulkCreate(apiUsers);
+          console.log("Create users successfully!");
+        }
+    
+        const users = await User.findAll(); // Obtener todos los usuarios después de la creación inicial o si ya existían en la base de datos
+        
+        res.status(200).json(users);
+      } catch (error) {
+        res.status(500).send({ error: error.message });
+      }
 };
 
 // Obtener user por id
-const getUserHandler = (req, res) => {
+const getUserByIdHandler = (req, res) => {
     res.status(200).send('Detalles de un user o trrabajador por id')
 }
 
@@ -18,6 +45,6 @@ const createUserHandler = (req, res) => {
 
 module.exports = {
     getUsersHandler,
-    getUserHandler,
+    getUserByIdHandler,
     createUserHandler
 }
