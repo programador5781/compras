@@ -22,6 +22,7 @@ const app = require('./src/app');
 const { conn, Model } = require('./src/db');
 const port = 3001;
 
+// Precargamaos la db con información de productos
 conn.sync({ force: true }).then(() => {
     app.listen(port, async () => {
         const allModels = await Model.findAll();
